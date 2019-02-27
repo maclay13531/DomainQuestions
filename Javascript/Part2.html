@@ -1,0 +1,81 @@
+<script>
+    // -----------------Delete command----------------- //
+    (function (x) {
+        delete x; // delete is used for properties of object. delete does NOT effect local variables
+        console.log(x); // result: 5
+    })(5);
+
+    let y = 10;
+    const deleteCommand = (function () {
+        delete y; // delete is used for properties of object. delete does NOT effect global variables
+        return y; // result: 10
+    })();
+    console.log(deleteCommand);
+
+    let z = {
+        foo: 100
+    };
+    const deleteCommand2 = (function () {
+        delete z.foo;
+        return z.foo; // result: undefined
+    })();
+    console.log(deleteCommand2);
+
+    // -----------------Delete property from copied object----------------- //
+    var Employee = {
+        company: 'xyz'
+    }
+    var emp1 = Object.create(Employee);
+    delete emp1.company // delete does not do anything to the copied object
+    delete Employee.company;
+    console.log(emp1.company);
+
+    // -----------------Create objects using class----------------- //
+    class Car {
+        constructor(year, make, price) {
+            this.year = year;
+            this.make = make;
+            this.price = price;
+        }
+
+        displayInfo() {
+            let sentenceToDisplay = this.make + ' from ' + this.year + ' is $' + this.price;
+            return sentenceToDisplay;
+        }
+    }
+    let firstCar = new Car(1999, 'Toyota', 20000);
+    let secondCar = new Car(2010, 'Honda', 25000);
+    console.log(firstCar);
+    console.log(secondCar);
+    console.log(firstCar.displayInfo());
+    console.log(secondCar.displayInfo());
+
+    // -----------------Undefined x 1 / empty----------------- //
+    var trees = ["redwood", "bay", "cedar", "oak", "maple"];
+    delete trees[3];
+    console.log(trees); //result ["redwood", "bay", "cedar", empty, "maple"]
+    console.log(trees[4]); // trees[4] will still display maple
+    console.log(trees.length); // result: 5
+
+    // -----------------Different data type Operator----------------- //
+    let bar = true;
+    console.log(bar + 0); // result: 1 + 0 = 1
+    console.log(bar + "xyz"); // result 1 + 'xyz' = 'true' + 'xyz' = 'truexyz'
+    console.log(bar + true); // result  1 + 1 = 2
+    console.log(bar + false); // result  1 + 0 = 1
+
+    // -----------------Associativity----------------- //
+    var first = 1;
+    var second = first = typeof second; // read right to left typeof second = undefined
+    console.log(second);
+
+    // -----------------Function declartion----------------- //
+    fooDeclare(); // Calling foo function here will give an Error
+    var fooDeclare = function () {
+        console.log("Hi I am inside foo");
+    };
+    barDeclare(); // Calling foo function will not give an Error
+    function barDeclare() {
+        console.log("Hi I am inside bar");
+    };
+</script>

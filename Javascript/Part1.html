@@ -1,0 +1,61 @@
+<script>
+    // -----------------Eval inside of if statement----------------- //
+    function evalCheck() {
+        if (function f() { }) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    console.log(evalCheck());
+
+    var k = 1;
+    if (function foo() { }) {
+        k += typeof foo; // foo is undefined thus 1(int) + undefined(string) 
+    }
+    console.log(k); // result: 1 + 'undefined' = '1undefined'
+
+    // -----------------Closure in Javascript----------------- //
+    function fnClosure() {
+        for (var i = 0; i < 5; i++) {
+            (function innerFn(i) {
+                setTimeout(function () { console.log(i) }, 0);
+            })(i);
+        }
+    }
+    console.log(fnClosure());
+    // closures are function defined inside of function and they have access to all variables
+
+    // -----------------Function inside of function----------------- //
+    function outerFn(num1) {
+        return function (num2) {
+            return function (num3) {
+                return num1 * num2 * num3;
+            }
+        }
+    }
+    console.log(outerFn(2)(3)(4));
+
+    // -----------------Empty javascript array----------------- //
+    var arrayToEmpty = [5, 6, 7, 8, 9, 10];
+    var arrayToEmpty2 = arrayToEmpty;
+    arrayToEmpty = []; // this will create an empty array. arrayToEmpty2 is NOT empty
+    console.log(arrayToEmpty2);
+    arrayToEmpty.length = 0;
+    console.log(arrayToEmpty);
+
+    // -----------------Check if an object is an array----------------- //
+    var arrayToCheck = [1, 2];
+    if (Object.prototype.toString.call(arrayToCheck) === '[object Array]') {
+        console.log('Is is an array!');
+    } else {
+        console.log('It is NOT an array...');
+    }
+
+    // -----------------Difference between undefined and no defined----------------- //
+    var x;
+    console.log(x); // result: undefined
+    console.log(y); // result: not defined
+    // x is declared and memory allocation has occured
+    // y has not been declared
+</script>
