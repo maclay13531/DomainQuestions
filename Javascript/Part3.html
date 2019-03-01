@@ -1,3 +1,4 @@
+<body></body>
 <script>
     // -----------------Hoisting Example----------------- //
     var salary = "1000$";
@@ -21,4 +22,51 @@
     }
     console.log(counter);
     console.log(Object.keys(counterArray).length);
+
+    // -----------------Interger Check----------------- //
+    let remainderCheck = (10.5 % 2);
+    console.log(remainderCheck);
+
+    // -----------------Function inside of function----------------- //
+    function sum(x, y) {
+        if (y) {
+            return x + y;
+        } else {
+            return function (y) {
+                return x + y;
+            }
+        }
+    }
+    console.log(sum(2, 3));
+    console.log(sum(2)(3));
+
+    // -----------------Let vs Var(Closure)----------------- //
+    for (var i = 0; i < 5; i++) {
+        var btn = document.createElement('button');
+        btn.appendChild(document.createTextNode('Button ' + i));
+        (function (i) {
+            btn.addEventListener('click', function () { console.log(i); });
+        })(i);
+        document.body.appendChild(btn);
+    }
+
+    // -----------------Copy Array----------------- //
+    let originalArray = [0, 1, 2, 3];
+    let copyArray = originalArray.slice(0,originalArray.length);
+    console.log(originalArray);
+    console.log(copyArray);
+    if (originalArray === copyArray) {
+        console.log('They are equal');
+    } else {
+        console.log('They are NOT equal');
+    }
+
+    // -----------------Event Queue----------------- //
+    (function () {
+        console.log(1);
+        setTimeout(function () { console.log(2) }, 1000);
+        setTimeout(function () { console.log(3) }, 0);
+        console.log(4);
+    })();
+    console.log(5);
 </script>

@@ -1,0 +1,66 @@
+<script>
+    // -----------------Lambda----------------- //
+    let lambda = function (x) {
+        return function (y) {
+            return x + y;
+        }
+    }
+    let lambdaResult = lambda(5);
+    console.log(lambda(5)(10));
+    console.log(lambdaResult(10));
+
+    // -----------------Imperitive vs Declarative----------------- //
+    let books = [
+        { name: 'JavaScript', pages: 450 },
+        { name: 'Angular', pages: 902 },
+        { name: 'Node', pages: 732 }
+    ];
+
+    for (let i = 0; i < books.length; i++) {
+        books[i].lastRead = new Date();
+    }
+
+    books.map((book) => {
+        book.lastReadBy = 'me';
+        return book;
+    });
+    console.log(books);
+
+    // -----------------Filter----------------- //
+    let filterArray = [0, 5, 10, 15];
+    let filterResult = filterArray.filter((num) => {
+        return num > 5;
+    });
+    console.log(filterArray);
+    console.log(filterResult);
+
+    // -----------------Fizz Buzz----------------- //
+    let userInput = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+    let resultInput = userInput.map((num, i) => {
+        if (num % 3 === 0 && num % 5 === 0) {
+            return 'FizzBuzz';
+        } else if (num % 3 === 0) {
+            return 'Fizz';
+        } else if (num % 5 === 0) {
+            return 'Buzz';
+        } else {
+            return i + 1;
+        }
+    });
+    console.log(userInput);
+    console.log(resultInput);
+
+    const fizz = (value) => {
+        return (value % 3 === 0) ? 'Fizz' : value;
+    }
+    const buzz = (value) => {
+        return (value % 5 === 0) ? 'Buzz' : value;
+    }
+
+    const fizzBuzz = (value) => {
+        return (value % 5 === 0 && value % 3 === 0) ? 'FizzBuzz' : (value % 3 === 0) ? 'Fizz' : (value % 5 === 0) ? 'Buzz' : value;
+    }
+    console.log(fizzBuzz(15));
+    console.log(fizzBuzz(16));
+    console.log(fizzBuzz(0));
+</script>
