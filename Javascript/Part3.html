@@ -69,4 +69,10 @@
         console.log(4);
     })();
     console.log(5);
+
+    // -----------------Pure Function----------------- //
+    // 1: avoid directly effecting shared state
+    // 2: avoid mutating the original data
+    // 3: by avoiding mutating the original state or data, avoid any potential side-effect
+    // ex: array.map((value) => { return value + 1}); this does NOT change the original array 
 </script>
