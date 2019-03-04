@@ -10,6 +10,24 @@
         console.log("My New Salary " + salary);
     })();
 
+    // console.log(letExmaple); // result: not defined
+    // console.log(varExmaple); // result: undefined
+    let letExmaple = 'test';
+    var varExmaple = 'test';
+    function getShape(condition) {
+        // shape exists here with a value of undefined
+        // OUTPUT : undefined
+        console.log(shape);
+        if (condition) {
+            var shape = "square";
+            // some other code
+            return shape;
+        } else {
+            // shape exists here with a value of undefined
+            return false;
+        }
+    }
+
     // -----------------Length of associative array----------------- //
     var counterArray = {
         A: 3,
@@ -26,6 +44,16 @@
     // -----------------Interger Check----------------- //
     let remainderCheck = (10.5 % 2);
     console.log(remainderCheck);
+    const intCheck = (value) => {
+        let correctRemainder = [0, 1];
+        if (value % 2 in correctRemainder) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    console.log(intCheck(9));
+    console.log(intCheck(9.5));
 
     // -----------------Function inside of function----------------- //
     function sum(x, y) {
@@ -52,7 +80,7 @@
 
     // -----------------Copy Array----------------- //
     let originalArray = [0, 1, 2, 3];
-    let copyArray = originalArray.slice(0,originalArray.length);
+    let copyArray = originalArray.slice(0, originalArray.length);
     console.log(originalArray);
     console.log(copyArray);
     if (originalArray === copyArray) {

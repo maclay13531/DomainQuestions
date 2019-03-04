@@ -1,3 +1,30 @@
 <script>
+    // -----------------Associtivty----------------- //
+    (function () {
+        var a = b = 3;
+    })();
 
+    // console.log(a); // result: not declared
+    console.log(b); // result: 3
+
+    // -----------------This----------------- //
+    let myObject = {
+        foo: "bar",
+        func: function () {
+            var self = this;
+            console.log("outer func:  this.foo = " + this.foo);
+            console.log("outer func:  self.foo = " + self.foo);
+            (function () {
+                console.log("inner func:  this.foo = " + this.foo);
+                console.log("inner func:  self.foo = " + self.foo);
+            }());
+        }
+    };
+    myObject.func();
+
+    // -----------------Use Strict----------------- //
+    // Debugging becomes easier
+    // Accidental global variables due to hoisting prevention
+    // Delete command will give error message when used not on properties
+    // Parameters/Arguements number
 </script>

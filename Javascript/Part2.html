@@ -27,6 +27,7 @@
     }
     var emp1 = Object.create(Employee);
     delete emp1.company // delete does not do anything to the copied object
+    console.log(emp1.company);
     delete Employee.company;
     console.log(emp1.company);
 
@@ -65,7 +66,7 @@
     console.log(bar + false); // result  1 + 0 = 1
 
     // -----------------Associativity----------------- //
-    var first = 1;
+    let first = 1;
     var second = first = typeof second; // read right to left typeof second = undefined
     console.log(second);
 
