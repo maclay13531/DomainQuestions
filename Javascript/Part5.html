@@ -1,3 +1,105 @@
 <script>
+    // -----------------This----------------- //
+    console.log(false == '0') //result: true
+    console.log(false === '0') //result: false
 
+    // -----------------Javascript Object Properties----------------- //
+    let a = {};
+    let b = { key: 'b' };
+    let c = { key: 'c' };
+    a[b] = 123;
+    console.log(a);
+    console.log(a[b]); //result: 123
+    a[c] = 456;
+    console.log(a);
+    console.log(a[b]); //result: 456
+
+    // -----------------Closure----------------- //
+    (function (x) {
+        return (function (y) {
+            console.log(x); //result: 1
+        })(2)
+    })(1);
+
+    // -----------------Object Scope Properties----------------- //
+    var hero = {
+        _name: 'John Doe',
+        getSecretIdentity: function () {
+            return this._name;
+        }
+    };
+
+    var stoleSecretIdentity = hero.getSecretIdentity;
+    console.log(stoleSecretIdentity()); //result: undefined
+    console.log(hero.getSecretIdentity.bind(hero)()); //result: 'John Doe'
+    console.log(hero.getSecretIdentity()); //result: 'John Doe'
+
+    // -----------------This advanced----------------- //
+    var length = 10;
+    function fn() {
+        console.log(this.length);
+    }
+
+    var obj = {
+        length: 5,
+        method: function (fn, num1, num2) {
+            fn();
+            arguments[0]();
+            console.log(arguments[0]);
+            console.log(arguments[1]);
+            console.log(arguments[2]);
+        }
+    };
+    obj.method(fn, 1, 5);
+
+    // -----------------Hoisted----------------- //
+    var x = 21;
+    var girl = function () {
+        console.log(x); //result: undeinfed
+        var x = 20;
+    };
+    girl();
+
+    // -----------------Object copy----------------- //
+    var obj = { a: 1, b: 2 }
+    var objclone = Object.assign({}, obj);
+
+    let objTest = {
+        a: 1,
+        b: 2,
+        c: {
+            age: 30
+        }
+    };
+
+    // note that this does not do DEEP clone. Nested object is still referencing to the same location
+    var objcloneTest = Object.assign({}, objTest);
+    console.log('objclone: ', objcloneTest);
+
+    objTest.c.age = 45;
+    console.log('After Change - obj: ', objTest);           // 45 - This also changes
+    console.log('After Change - objclone: ', objcloneTest); // 45
+
+    // -----------------Eval----------------- //
+    console.log(1 < 2 < 3); //result: 1
+    console.log(3 > 2 > 1); //result: 0
+
+    // -----------------Add element on an array----------------- //
+    var myArray = ['a', 'b', 'c', 'd'];
+    myArray.push('end');
+    myArray.unshift('start');
+    console.log(myArray); // ["start", "a", "b", "c", "d", "end"]
+    // using spread operator
+    let spreadOperatorArray = [...myArray, null,'last element'];
+    console.log(spreadOperatorArray);
+
+    // -----------------typeof undefined vs typeof Null----------------- //
+    console.log(typeof undefined);
+    console.log(typeof NULL); //NULL !== null
+    console.log(typeof notDeclaredVariable); //NULL !== null
+    if (typeof undefined === typeof NULL) {
+        console.log(true);
+    } else {
+        console.log(false);
+    }
 </script>
