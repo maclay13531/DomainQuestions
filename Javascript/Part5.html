@@ -15,8 +15,8 @@
     console.log(a[b]); //result: 456
 
     // -----------------Closure----------------- //
-    (function (x) {
-        return (function (y) {
+    ((x) => {
+        return ((y) => {
             console.log(x); //result: 1
         })(2)
     })(1);
@@ -77,8 +77,8 @@
     console.log('objclone: ', objcloneTest);
 
     objTest.c.age = 45;
-    console.log('After Change - obj: ', objTest);           // 45 - This also changes
-    console.log('After Change - objclone: ', objcloneTest); // 45
+    console.log('After Change - obj: ', objTest.c.age);           // 45 - This also changes
+    console.log('After Change - objclone: ', objcloneTest.c.age); // 45
 
     // -----------------Eval----------------- //
     console.log(1 < 2 < 3); //result: 1
