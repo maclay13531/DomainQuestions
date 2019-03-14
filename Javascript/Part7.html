@@ -1,0 +1,36 @@
+<script>
+    // -----------------Max value----------------- //
+    const numberArry = [5, 3, 10, 20, 15];
+    const maxNumber = Math.max(...numberArry);
+    console.log(maxNumber);
+
+    // -----------------Spread Operator----------------- //
+    const testArry = [0, 1, 2];
+    const spreadArry = [...testArry];
+    console.log(testArry);
+    console.log(spreadArry);
+    spreadArry[0] = 'NEW';
+    console.log(testArry);
+    console.log(spreadArry);
+
+    // -----------------String Convert----------------- //
+    const number = 10;
+    console.log(typeof number);
+    const numberToString = number.toString();
+    console.log(typeof number);
+    console.log(typeof numberToString);
+
+    // -----------------In----------------- //
+    const inArray = [2, 1];
+    const inTest = (inArray, test) => {
+        if (inArray.includes(test)) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+    console.log(inTest(inArray, 1));
+    console.log(inTest(inArray, 2));
+    console.log(inTest(inArray, 3));
+
+</script>
