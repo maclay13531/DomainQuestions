@@ -1,3 +1,71 @@
 <script>
+    // -----------------== vs ===----------------- //
+    const equalOperator = (test1, test2) => {
+        let finalResult = [];
+        if (test1 == test2) {
+            finalResult.push('Double Equal Sign True Case');
+        }
 
+        if (test1 === test2) {
+            finalResult.push('Triple Equal Sign True Case');
+        }
+        return finalResult;
+    }
+
+    console.log(equalOperator(1, '1'));
+    console.log(equalOperator(1, 1));
+
+    // -----------------Object Equality----------------- //
+    const objectEquality = (object1, object2) => {
+        if (Object.keys(object1).length !== Object.keys(object1).length) {
+            return false;
+        }
+        for (let i = 0; i < Object.keys(object1).length; i++) {
+            if (Object.values(object1)[i] !== Object.values(object2)[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    console.log(objectEquality({a: 10, b: 10}, {a: 10, b: 10}));
+    console.log(objectEquality({a: 10, b: 10}, {a: 10, b: 15}));
+    // -----------------Get Date----------------- //
+    const dateFunction = () => {
+        const today = new Date();
+        const tomorrow = today.getDate() + 1;
+        return [today, tomorrow];
+    }
+    console.log(dateFunction());
+
+    // -----------------Bind----------------- //
+    let bindTestObject = {
+        name: '0',
+        value: 200,
+        subtract: function(value) {
+            return this.value - value;
+        }
+    };
+
+    console.log(bindTestObject.subtract(50));
+
+    let bindTestObject1 = {
+        name: '1',
+        value: 500
+    };
+    let bindTestObject1Subtract = bindTestObject.subtract.bind(bindTestObject1, 100);
+    console.log(bindTestObject1Subtract());
+    
+    // -----------------Arguements----------------- //
+    function argument() {
+        const length = arguments.length;
+        if (length > 2) {
+            return false; // not greater than 2
+        } else {
+            return true; // greater than 2
+        }
+    }
+
+    console.log(argument(1, 2));
+    console.log(argument(1, 2, 3));
 </script>
